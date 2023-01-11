@@ -10,7 +10,10 @@ function Board() {
   let [visited, setVisited] = useState(new Set()); //contains hashed nodes
   let [stack, setStack] = useState([]); //contains hashed nodes
   let [path, setPaths] = useState([]);
-  
+
+  let n = 20;
+  let m = 50;
+
   function switchNode(id) {
     if (nodeType === "target") {
       if (walls.includes(id)) {
@@ -109,6 +112,8 @@ function Board() {
   return (
     <div>
       <Selector
+        n={n}
+        m={m}
         targets={targets}
         walls={walls}
         nodeType={nodeType}
@@ -119,7 +124,7 @@ function Board() {
         stack={stack}
         setStack={setStack}
       />
-      <div className="board">{createBoard(10, 15, targets, walls)}</div>
+      <div className="board">{createBoard(n, m, targets, walls)}</div>
     </div>
   );
 }

@@ -32,17 +32,17 @@ function Floodfill(n, m, targets, walls, visited, stack, setAlgo) {
     if (walls.includes(hash)) {
       continue;
     } else if (targets.includes(hash)) {
-        let finished = true
-        for (let t of targets) {
-            if (!visited.has(t)) {
-                finished = false
-                break
-            }
+      let finished = true;
+      for (let t of targets) {
+        if (!visited.has(t)) {
+          finished = false;
+          break;
         }
-        if (finished) {
-            setAlgo("")
-            break
-        }
+      }
+      if (finished) {
+        setAlgo("");
+        break;
+      }
     }
     stack.push(hash);
   }
