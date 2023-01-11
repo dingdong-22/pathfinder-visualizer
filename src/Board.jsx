@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Selector from "./Selector";
-import Floodfill from "./algorithms/Floodfill";
 
 function Board() {
   let [nodeType, setNodeType] = useState("target");

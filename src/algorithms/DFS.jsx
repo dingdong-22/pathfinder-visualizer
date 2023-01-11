@@ -1,11 +1,11 @@
 let moves = [
-  [-1, 0],
-  [0, 1],
-  [1, 0],
   [0, -1],
+  [-1, 0],
+  [1, 0],
+  [0, 1],
 ];
 
-function Floodfill(n, m, targets, walls, visited, stack, setAlgo) {
+function DFS(n, m, targets, walls, visited, stack, setAlgo) {
   function validMove(i, j) {
     if (i < 0 || i >= n || j < 0 || j >= m) {
       return false;
@@ -19,7 +19,7 @@ function Floodfill(n, m, targets, walls, visited, stack, setAlgo) {
   }
 
   let [x, y] = stack
-    .shift()
+    .pop()
     .split(",")
     .map((x) => parseInt(x));
   for (let [dx, dy] of moves) {
@@ -50,4 +50,4 @@ function Floodfill(n, m, targets, walls, visited, stack, setAlgo) {
   return "bean";
 }
 
-export default Floodfill;
+export default DFS;
