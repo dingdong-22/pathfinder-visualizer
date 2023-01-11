@@ -5,13 +5,29 @@
 
 .board {
   display: grid;
-  grid-template-columns: repeat(15, 50px);
   grid-template-rows: repeat(10, 50px);
+  grid-template-columns: repeat(15, 50px);
 }
 
 .board button {
   width: 50px;
   height: 50px;
+}
+
+.target-node {
+  background-color: rgb(64, 211, 64);
+}
+
+.wall-node {
+  background-color: rgb(174, 83, 83);
+}
+
+.visited-node {
+  background-color: yellow;
+}
+
+.stack-node {
+  background-color: blue;
 }
 
 .selector {

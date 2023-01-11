@@ -1,31 +1,36 @@
 import { useState } from "react";
 import Selector from "./Selector";
+import Floodfill from "./algorithms/Floodfill";
 
 function Board() {
   let [nodeType, setNodeType] = useState("target");
 
-  let [nodes, setNodes] = useState([]);
+  let [targets, setTargets] = useState([]);
   let [walls, setWalls] = useState([]);
+  let [visited, setVisited] = useState(new Set()); //contains hashed nodes
+  let [stack, setStack] = useState([]); //contains hashed nodes
   let [path, setPaths] = useState([]);
-
+  
   function switchNode(id) {
     if (nodeType === "target") {
       if (walls.includes(id)) {
         return;
       }
-      let nodeIdx = nodes.indexOf(id);
-      let newNodes = [...nodes];
+      console.log("Targets:", targets);
+      let nodeIdx = targets.indexOf(id);
+      let newNodes = [...targets];
       if (nodeIdx === -1) {
         newNodes.push(id);
       } else {
         newNodes.splice(nodeIdx, 1);
       }
 
-      setNodes(newNodes);
+      setTargets(newNodes);
     } else if (nodeType === "wall") {
-      if (nodes.includes(id)) {
+      if (targets.includes(id)) {
         return;
       }
+      console.log("Walls:", walls);
       let wallIdx = walls.indexOf(id);
       let newWalls = [...walls];
       if (wallIdx === -1) {
@@ -37,31 +42,53 @@ function Board() {
     }
   }
 
-  function createBoard(n, m, nodes, walls) {
+  function createBoard(n, m, targets, walls) {
     let board = [];
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < m; j++) {
         let hash = `${i},${j}`;
-        if (nodes.includes(hash)) {
+        if (targets.includes(hash)) {
           board.push(
             <button
-              className="empty-node"
+              className="target-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => switchNode(e.target.id)}
             >
-              {nodes.indexOf(hash)}
+              {targets.indexOf(hash)}
             </button>
           );
         } else if (walls.includes(hash)) {
           board.push(
             <button
-              className="empty-node"
+              className="wall-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => switchNode(e.target.id)}
             >
               X
+            </button>
+          );
+        } else if (stack.includes(hash)) {
+          board.push(
+            <button
+              className="stack-node"
+              id={`${i},${j}`}
+              key={`${i},${j}`}
+              onClick={(e) => switchNode(e.target.id)}
+            >
+              S
+            </button>
+          );
+        } else if (visited.has(hash)) {
+          board.push(
+            <button
+              className="visited-node"
+              id={`${i},${j}`}
+              key={`${i},${j}`}
+              onClick={(e) => switchNode(e.target.id)}
+            >
+              V
             </button>
           );
         } else {
@@ -81,8 +108,18 @@ function Board() {
 
   return (
     <div>
-      <Selector nodeType={nodeType} setNodeType={setNodeType} />
-      <div className="board">{createBoard(15, 10, nodes, walls)}</div>
+      <Selector
+        targets={targets}
+        walls={walls}
+        nodeType={nodeType}
+        setNodeType={setNodeType}
+        setPaths={setPaths}
+        visited={visited}
+        setVisited={setVisited}
+        stack={stack}
+        setStack={setStack}
+      />
+      <div className="board">{createBoard(10, 15, targets, walls)}</div>
     </div>
   );
 }
