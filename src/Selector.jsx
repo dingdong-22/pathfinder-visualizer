@@ -1,66 +1,100 @@
 import { useState, useEffect } from "react";
 import BFS from "./algorithms/BFS";
 import DFS from "./algorithms/DFS";
-import ManhattenAStar1 from "./algorithms/ManhattenAStar1";
-import ManhattenAStar2 from "./algorithms/ManhattenAStar2";
+import ManhattanAStar1 from "./algorithms/ManhattanAStar1";
+import ManhattanAStar2 from "./algorithms/ManhattanAStar2";
 
 function Selector(props) {
-  let [data, setData] = useState({}); //stack the algorithm needs
   let [algo, setAlgo] = useState(""); //pick algo, also acts as a toggle
+  let [pointer, setPointer] = useState(0);
+
   let n = props.n;
   let m = props.m;
   let speed = 20;
+  function stackCopier() {
+    let stack = [];
+    for (let data of props.stack) {
+      let chunk = [];
+      for (let piece of data) {
+        if (Array.isArray(piece)) {
+          chunk.push([...piece]);
+        } else {
+          chunk.push(piece);
+        }
+      }
+      stack.push(chunk);
+    }
+    return stack;
+  }
 
   useEffect(() => {
-    if (algo !== "") {
+    if (pointer !== props.targets.length - 1) {
       let visited = new Set(props.visited);
-      let stack = [...props.stack]; // either props.stack or if more data, use data
+      let stack = stackCopier();
       let interval;
-      let dataCopy = JSON.parse(JSON.stringify(data));
-
       if (algo === "BFS") {
         interval = setTimeout(() => {
-          BFS(n, m, props.targets, props.walls, visited, stack, setAlgo);
+          BFS(
+            n,
+            m,
+            props.targets,
+            props.walls,
+            visited,
+            stack,
+            pointer,
+            setPointer,
+            props.displayStack
+          );
           props.setVisited(visited);
           props.setStack(stack);
         }, speed);
       } else if (algo === "DFS") {
         interval = setTimeout(() => {
-          DFS(n, m, props.targets, props.walls, visited, stack, setAlgo);
+          DFS(
+            n,
+            m,
+            props.targets,
+            props.walls,
+            visited,
+            stack,
+            pointer,
+            setPointer,
+            props.displayStack
+          );
           props.setVisited(visited);
           props.setStack(stack);
         }, speed);
       } else if (algo === "MAS1") {
         interval = setTimeout(() => {
-          ManhattenAStar1(
+          ManhattanAStar1(
             n,
             m,
             props.targets,
             props.walls,
             visited,
             stack,
-            dataCopy,
-            setAlgo
+            pointer,
+            setPointer,
+            props.displayStack
           );
           props.setVisited(visited);
           props.setStack(stack);
-          setData(dataCopy);
         }, speed);
       } else if (algo === "MAS2") {
         interval = setTimeout(() => {
-          ManhattenAStar2(
+          ManhattanAStar2(
             n,
             m,
             props.targets,
             props.walls,
             visited,
             stack,
-            dataCopy,
-            setAlgo
+            pointer,
+            setPointer,
+            props.displayStack
           );
           props.setVisited(visited);
           props.setStack(stack);
-          setData(dataCopy);
         }, speed);
       }
 
@@ -69,10 +103,12 @@ function Selector(props) {
   }, [algo, props.visited]);
 
   function reset() {
-    if (props.visited.size > 0) {
+    //needs to not rely on visited but rather paths when implemented
+    if (props.visited.size > 0 || pointer > 0) {
       props.setVisited(new Set());
       props.setStack([]);
-      setData({});
+      props.setDisplayStack(new Set());
+      setPointer(0);
     } else {
       props.setTargets([]);
       props.setWalls([]);
@@ -84,15 +120,15 @@ function Selector(props) {
       <button onClick={() => props.setNodeType("target")}>Target Node</button>
       <button onClick={() => props.setNodeType("wall")}>Wall Node</button>
       <button onClick={() => reset()}>
-        {props.visited.size > 0 ? "Reset" : "Full Reset"}
+        {props.visited.size > 0 || pointer > 0 ? "Reset" : "Full Reset"}
       </button>
       <button onClick={() => setAlgo(algo === "" ? "BFS" : "")}>BFS</button>
       <button onClick={() => setAlgo(algo === "" ? "DFS" : "")}>DFS</button>
       <button onClick={() => setAlgo(algo === "" ? "MAS1" : "")}>
-        Manhatten A Star I
+        Manhattan A Star I
       </button>
       <button onClick={() => setAlgo(algo === "" ? "MAS2" : "")}>
-        Manhatten A Star II
+        Manhattan A Star II
       </button>
     </div>
   );

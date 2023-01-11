@@ -9,7 +9,7 @@ function manhattanDistance(x, y, target) {
   return Math.abs(x - target[0]) + Math.abs(y - target[1]);
 }
 
-function DFS(
+function ManhattanAStar1(
   n,
   m,
   targets,
@@ -25,6 +25,12 @@ function DFS(
       return false;
     }
     return true;
+  }
+
+  function heuristic(a, b) {
+    console.log(a)
+    let [c1, c2] = [a[1] + a[2].length, b[1] + b[2].length];
+    return c2 - c1;
   }
 
   if (stack.length === 0) {
@@ -61,7 +67,8 @@ function DFS(
     displayStack.add(hash);
   }
 
+  stack = stack.sort((a, b) => heuristic(a, b));
   return;
 }
 
-export default DFS;
+export default ManhattanAStar1;
