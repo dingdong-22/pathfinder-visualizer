@@ -31,9 +31,9 @@ function Selector(props) {
     if (pointer !== props.targets.length - 1) {
       let visited = new Set(props.visited);
       let stack = stackCopier();
-      let interval;
+      let timeout;
       if (algo === "BFS") {
-        interval = setTimeout(() => {
+        timeout = setTimeout(() => {
           BFS(
             n,
             m,
@@ -43,13 +43,15 @@ function Selector(props) {
             stack,
             pointer,
             setPointer,
-            props.displayStack
+            props.displayStack,
+            props.mainPath,
+            props.setMainPath
           );
           props.setVisited(visited);
           props.setStack(stack);
         }, speed);
       } else if (algo === "DFS") {
-        interval = setTimeout(() => {
+        timeout = setTimeout(() => {
           DFS(
             n,
             m,
@@ -59,13 +61,15 @@ function Selector(props) {
             stack,
             pointer,
             setPointer,
-            props.displayStack
+            props.displayStack,
+            props.mainPath,
+            props.setMainPath
           );
           props.setVisited(visited);
           props.setStack(stack);
         }, speed);
       } else if (algo === "MAS1") {
-        interval = setTimeout(() => {
+        timeout = setTimeout(() => {
           ManhattanAStar1(
             n,
             m,
@@ -75,13 +79,15 @@ function Selector(props) {
             stack,
             pointer,
             setPointer,
-            props.displayStack
+            props.displayStack,
+            props.mainPath,
+            props.setMainPath
           );
           props.setVisited(visited);
           props.setStack(stack);
         }, speed);
       } else if (algo === "MAS2") {
-        interval = setTimeout(() => {
+        timeout = setTimeout(() => {
           ManhattanAStar2(
             n,
             m,
@@ -91,28 +97,29 @@ function Selector(props) {
             stack,
             pointer,
             setPointer,
-            props.displayStack
+            props.displayStack,
+            props.mainPath,
+            props.setMainPath
           );
           props.setVisited(visited);
           props.setStack(stack);
         }, speed);
       }
 
-      return () => clearTimeout(interval);
+      return () => clearTimeout(timeout);
     }
   }, [algo, props.visited]);
 
   function reset() {
-    //needs to not rely on visited but rather paths when implemented
-    if (props.visited.size > 0 || pointer > 0) {
-      props.setVisited(new Set());
-      props.setStack([]);
-      props.setDisplayStack(new Set());
-      setPointer(0);
-    } else {
+    if (props.mainPath.length === 0) {
       props.setTargets([]);
       props.setWalls([]);
     }
+    props.setVisited(new Set());
+    props.setStack([]);
+    props.setDisplayStack(new Set());
+    setPointer(0);
+    props.setMainPath([]);
   }
 
   return (

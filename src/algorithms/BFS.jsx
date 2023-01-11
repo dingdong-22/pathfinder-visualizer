@@ -18,7 +18,9 @@ function BFS(
   stack,
   pointer,
   setPointer,
-  displayStack
+  displayStack,
+  mainPath,
+  setMainPath
 ) {
   function validMove(i, j) {
     if (i < 0 || i >= n || j < 0 || j >= m) {
@@ -54,6 +56,11 @@ function BFS(
       visited.clear();
       stack.splice(0, stack.length);
       displayStack.clear();
+      let mainPathCopy = [...mainPath];
+      for (let z of path) {
+        mainPathCopy.push(z);
+      }
+      setMainPath(mainPathCopy);
       return;
     }
     let newD = manhattanDistance(i, j, targetNode);

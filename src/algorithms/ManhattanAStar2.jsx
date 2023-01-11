@@ -18,7 +18,9 @@ function ManhattanAStar2(
   stack,
   pointer,
   setPointer,
-  displayStack
+  displayStack,
+  mainPath,
+  setMainPath,
 ) {
   function validMove(i, j) {
     if (i < 0 || i >= n || j < 0 || j >= m) {
@@ -28,7 +30,6 @@ function ManhattanAStar2(
   }
 
   function heuristic(a, b) {
-    console.log(a)
     let [c1, c2] = [a[1], b[1]];
     return c2 - c1;
   }
@@ -60,6 +61,11 @@ function ManhattanAStar2(
       visited.clear();
       stack.splice(0, stack.length);
       displayStack.clear();
+      let mainPathCopy = [...mainPath]
+      for (let z of path) {
+        mainPathCopy.push(z)
+      }
+      setMainPath(mainPathCopy)
       return;
     }
     let newD = manhattanDistance(i, j, targetNode);

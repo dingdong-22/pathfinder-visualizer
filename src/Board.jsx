@@ -6,10 +6,10 @@ function Board() {
 
   let [targets, setTargets] = useState([]);
   let [walls, setWalls] = useState([]);
-  let [visited, setVisited] = useState(new Set()); //contains hashed nodes
+  let [visited, setVisited] = useState(new Set());
   let [displayStack, setDisplayStack] = useState(new Set());
   let [stack, setStack] = useState([]);
-  let [path, setPaths] = useState([]);
+  let [mainPath, setMainPath] = useState([]);
 
   let n = 20;
   let m = 50;
@@ -94,7 +94,23 @@ function Board() {
               V
             </button>
           );
-        } else {
+        }
+        
+        else if (mainPath.includes(hash)) {
+          board.push(
+            <button
+              className="main-path-node"
+              id={`${i},${j}`}
+              key={`${i},${j}`}
+              onClick={(e) => switchNode(e.target.id)}
+            >
+              M
+            </button>
+          );
+        } 
+        
+        
+        else {
           board.push(
             <button
               className="empty-node"
@@ -120,13 +136,14 @@ function Board() {
         setWalls={setWalls}
         nodeType={nodeType}
         setNodeType={setNodeType}
-        setPaths={setPaths}
         visited={visited}
         setVisited={setVisited}
         stack={stack}
         setStack={setStack}
         displayStack={displayStack}
         setDisplayStack={setDisplayStack}
+        mainPath={mainPath}
+        setMainPath={setMainPath}
       />
       <div className="board">{createBoard(n, m, targets, walls)}</div>
     </div>

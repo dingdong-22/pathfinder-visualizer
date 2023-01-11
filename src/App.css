@@ -32,6 +32,10 @@
   background-color: rgb(255, 102, 0);
 }
 
+.main-path-node {
+background-color: rgb(4, 117, 255);
+}
+
 .selector {
   display: flex;
   justify-content: center;
