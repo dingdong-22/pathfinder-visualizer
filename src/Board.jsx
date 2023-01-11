@@ -114,7 +114,9 @@ function Board() {
         n={n}
         m={m}
         targets={targets}
+        setTargets={setTargets}
         walls={walls}
+        setWalls={setWalls}
         nodeType={nodeType}
         setNodeType={setNodeType}
         setPaths={setPaths}
