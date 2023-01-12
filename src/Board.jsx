@@ -5,7 +5,7 @@ function Board() {
   let [nodeType, setNodeType] = useState("target");
 
   let [targets, setTargets] = useState([]);
-  let [walls, setWalls] = useState([]);
+  let [walls, setWalls] = useState(new Set());
   let [visited, setVisited] = useState(new Set());
   let [displayStack, setDisplayStack] = useState(new Set());
   let [stack, setStack] = useState([]);
@@ -16,30 +16,29 @@ function Board() {
 
   function switchNode(id) {
     if (nodeType === "target") {
-      if (walls.includes(id)) {
+      if (walls.has(id)) {
         return;
       }
       console.log("Targets:", targets);
       let nodeIdx = targets.indexOf(id);
-      let newNodes = [...targets];
+      let newTargets = [...targets];
       if (nodeIdx === -1) {
-        newNodes.push(id);
+        newTargets.push(id);
       } else {
-        newNodes.splice(nodeIdx, 1);
+        newTargets.splice(nodeIdx, 1);
       }
 
-      setTargets(newNodes);
+      setTargets(newTargets);
     } else if (nodeType === "wall") {
       if (targets.includes(id)) {
         return;
       }
       console.log("Walls:", walls);
-      let wallIdx = walls.indexOf(id);
-      let newWalls = [...walls];
-      if (wallIdx === -1) {
-        newWalls.push(id);
+      let newWalls = new Set(walls);
+      if (newWalls.has(id)) {
+        newWalls.delete(id);
       } else {
-        newWalls.splice(wallIdx, 1);
+        newWalls.add(id);
       }
       setWalls(newWalls);
     }
@@ -61,7 +60,7 @@ function Board() {
               {targets.indexOf(hash)}
             </button>
           );
-        } else if (walls.includes(hash)) {
+        } else if (walls.has(hash)) {
           board.push(
             <button
               className="wall-node"
@@ -94,9 +93,7 @@ function Board() {
               V
             </button>
           );
-        }
-        
-        else if (mainPath.has(hash)) {
+        } else if (mainPath.has(hash)) {
           board.push(
             <button
               className="main-path-node"
@@ -107,10 +104,7 @@ function Board() {
               M
             </button>
           );
-        } 
-        
-        
-        else {
+        } else {
           board.push(
             <button
               className="empty-node"

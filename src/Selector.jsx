@@ -114,7 +114,7 @@ function Selector(props) {
   function reset() {
     if (props.mainPath.size === 0) {
       props.setTargets([]);
-      props.setWalls([]);
+      props.setWalls(new Set());
     }
     props.setVisited(new Set());
     props.setStack([]);

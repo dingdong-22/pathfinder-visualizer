@@ -54,7 +54,7 @@ function ManhattanAStar1(
     }
     visited.add(hash);
 
-    if (walls.includes(hash)) {
+    if (walls.has(hash)) {
       continue;
     } else if (hash === target) {
       setPointer(pointer + 1);
