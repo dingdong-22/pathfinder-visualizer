@@ -30,7 +30,7 @@ function SearchSelector(props) {
   }
 
   useEffect(() => {
-    if (!done) {
+    if (!done && props.targets.length > 1) {
       if (pointer !== props.targets.length - 1) {
         let visited = new Set(props.visited);
         let stack = stackCopier();
@@ -126,39 +126,42 @@ function SearchSelector(props) {
     props.setMainPath(new Set());
     setDone(false);
   }
-
+  console.log(algo)
   return (
     <div className="search-selector">
       <div className="search-selector-label">Search algorithms</div>
       <button
         className="search-algo-button"
         id="BFS"
-        onClick={() => setAlgo(algo === "" ? "BFS" : "")}
+        onClick={() => setAlgo(algo !== "BFS" ? "BFS" : "")}
       >
         BFS
       </button>
       <button
         className="search-algo-button"
         id="DFS"
-        onClick={() => setAlgo(algo === "" ? "DFS" : "")}
+        onClick={() => setAlgo(algo !== "DFS" ? "DFS" : "")}
       >
         DFS
       </button>
       <button
         className="search-algo-button"
         id="MAS1"
-        onClick={() => setAlgo(algo === "" ? "MAS1" : "")}
+        onClick={() => setAlgo(algo !== "MAS1" ? "MAS1" : "")}
       >
         A Star I
       </button>
       <button
         className="search-algo-button"
         id="MAS2"
-        onClick={() => setAlgo(algo === "" ? "MAS2" : "")}
+        onClick={() => setAlgo(algo !== "MAS2" ? "MAS2" : "")}
       >
         A Star II
       </button>
-      
+
+      {algo !== "" ? (
+        <div className="current-search-algo-display">{`Current Algorithm: ${algo}`}</div>
+      ) : null}
       <button className="search-algo-button" id="reset" onClick={() => reset()}>
         Reset Search
       </button>

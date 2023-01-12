@@ -50,7 +50,8 @@ h1 {
 .search-selector-label,
 .node-type-selector-label,
 .maze-selector-label,
-.maze-generating-message {
+.maze-generating-message,
+.current-search-algo-display {
   width: 140px;
   height: 40px;
   border: 1px black solid;
@@ -178,6 +179,15 @@ h1 {
 
 .maze-generating-message {
   width: 300px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background-color: var(--clr-reset-button);
+}
+
+.current-search-algo-display {
+  width: 200px;
+  height: 38px;
   display: grid;
   place-items: center;
   background-color: var(--clr-reset-button);

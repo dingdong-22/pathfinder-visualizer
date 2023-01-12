@@ -83,15 +83,14 @@ function MazeSelector(props) {
       >
         Recursive Division
       </button>
-      <button className="maze-algo-button" id="reset" onClick={() => reset()}>
-        Reset Map
-      </button>
-
       {algo !== "" && !done ? (
         <div className="maze-generating-message">
           "Generating maze please wait! =)"
         </div>
       ) : null}
+      <button className="maze-algo-button" id="reset" onClick={() => reset()}>
+        Reset Map
+      </button>
     </div>
   );
 }
