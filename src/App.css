@@ -3,6 +3,11 @@
   place-items: center;
 }
 
+h1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .board {
   display: grid;
   grid-template-rows: repeat(21, 20px);
@@ -14,6 +19,11 @@
   height: 20px;
   border: none;
   outline: 1px black solid;
+}
+
+.board button:hover {
+  transform: scale(1.3);
+  transition-delay: 0.01s;
 }
 
 .target-node {
@@ -39,14 +49,27 @@
 .node-type-selector {
   display: flex;
   justify-content: center;
+  height: 40px;
+  align-items: center;
 }
 
 .search-selector {
   display: flex;
   justify-content: center;
+  height: 40px;
+  align-items: center;
 }
 
 .maze-selector {
   display: flex;
   justify-content: center;
+  height: 40px;
+  align-items: center;
+}
+
+.node-type-button,
+.maze-algo-button,
+.search-algo-button {
+  width: 100px;
+  height: 40px;
 }

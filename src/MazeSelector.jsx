@@ -44,8 +44,13 @@ function MazeSelector(props) {
 
   return (
     <div className="maze-selector">
-      <button onClick={() => reset()}>Reset Walls + Targets</button>
-      <button onClick={() => setAlgo(algo === "" ? "DFS" : "")}>
+      <button className="maze-algo-button" onClick={() => reset()}>
+        Reset Walls + Targets
+      </button>
+      <button
+        className="maze-algo-button"
+        onClick={() => setAlgo(algo === "" ? "DFS" : "")}
+      >
         Recursive Backtracker
       </button>
     </div>
