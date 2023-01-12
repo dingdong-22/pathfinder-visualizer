@@ -1,21 +1,26 @@
 body {
   background-color: var(--clr-background);
 
-  --clr-background: #7bb7ec;
+  --clr-background: #b0cde6;
   --clr-node-type-on: #56fb56;
   --clr-node-type-off: #827979;
   --clr-node-type-target: #56fb56;
   --clr-node-type-wall: #827979;
-  --clr-search-algo-button: #67ff74;
-  --clr-maze-algo-button: #fbfb70;
-  --clr-reset-button: #ff4040;
+  --clr-search-algo-button: #ffb847;
+  --clr-maze-algo-button: #54f4ec;
+  --clr-reset-button: #ff5959;
 
   --clr-target-node: #43ff43;
   --clr-wall-node: #3b3a3a;
-  --clr-visited-node: #fbff00;
-  --clr-stack-node: #ff6600;
-  --clr-main-path-node: #0475ff;
-  --clr-label: #fca2f2;
+  --clr-visited-node: #f1f451;
+  --clr-stack-node: #ff6a00;
+  --clr-main-path-node: #2364fa;
+
+  --clr-node-label: #58cc58;
+  --clr-search-label: #e3a43f;
+  --clr-maze-label: #44e1d9;
+
+  --clr-current-algo: #00bbff;
 }
 
 .App {
@@ -61,6 +66,7 @@ h1 {
   outline: none;
   padding: 0;
   font-weight: 525;
+  font-size: 16px;
 }
 
 :where(
@@ -150,7 +156,7 @@ h1 {
   display: grid;
   place-content: center;
   margin: none;
-  background-color: var(--clr-label);
+  background-color: var(--clr-node-label);
   border: none;
   border-radius: 0%;
 }
@@ -159,7 +165,7 @@ h1 {
   display: grid;
   place-content: center;
   margin: none;
-  background-color: var(--clr-label);
+  background-color: var(--clr-search-label);
   border: none;
   border-radius: 0%;
 }
@@ -168,7 +174,7 @@ h1 {
   display: grid;
   place-content: center;
   margin: none;
-  background-color: var(--clr-label);
+  background-color: var(--clr-maze-label);
   border: none;
   border-radius: 0%;
 }
@@ -184,7 +190,7 @@ h1 {
   height: 38px;
   display: grid;
   place-items: center;
-  background-color: var(--clr-reset-button);
+  background-color: var(--clr-current-algo);
 }
 
 .current-search-algo-display {
@@ -192,5 +198,5 @@ h1 {
   height: 38px;
   display: grid;
   place-items: center;
-  background-color: var(--clr-reset-button);
+  background-color: var(--clr-current-algo);
 }
