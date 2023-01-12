@@ -5,13 +5,13 @@
 
 .board {
   display: grid;
-  grid-template-rows: repeat(20, 25px);
-  grid-template-columns: repeat(50, 25px);
+  grid-template-rows: repeat(25, 20px);
+  grid-template-columns: repeat(60, 20px);
 }
 
 .board button {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border: none;
   outline: 1px black solid;
 }

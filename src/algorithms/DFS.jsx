@@ -56,11 +56,11 @@ function DFS(
       visited.clear();
       stack.splice(0, stack.length);
       displayStack.clear();
-      let mainPathCopy = [...mainPath]
+      let mainPathCopy = new Set(mainPath);
       for (let z of path) {
-        mainPathCopy.push(z)
+        mainPathCopy.add(z);
       }
-      setMainPath(mainPathCopy)
+      setMainPath(mainPathCopy);
       return;
     }
     let newD = manhattanDistance(i, j, targetNode);

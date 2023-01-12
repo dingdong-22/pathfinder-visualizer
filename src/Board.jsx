@@ -9,10 +9,10 @@ function Board() {
   let [visited, setVisited] = useState(new Set());
   let [displayStack, setDisplayStack] = useState(new Set());
   let [stack, setStack] = useState([]);
-  let [mainPath, setMainPath] = useState([]);
+  let [mainPath, setMainPath] = useState(new Set());
 
-  let n = 20;
-  let m = 50;
+  let n = 25;
+  let m = 60;
 
   function switchNode(id) {
     if (nodeType === "target") {
@@ -96,7 +96,7 @@ function Board() {
           );
         }
         
-        else if (mainPath.includes(hash)) {
+        else if (mainPath.has(hash)) {
           board.push(
             <button
               className="main-path-node"

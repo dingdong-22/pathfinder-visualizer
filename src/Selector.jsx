@@ -10,7 +10,8 @@ function Selector(props) {
 
   let n = props.n;
   let m = props.m;
-  let speed = 20;
+  let speed = 10;
+
   function stackCopier() {
     let stack = [];
     for (let data of props.stack) {
@@ -119,7 +120,7 @@ function Selector(props) {
     props.setStack([]);
     props.setDisplayStack(new Set());
     setPointer(0);
-    props.setMainPath([]);
+    props.setMainPath(new Set());
   }
 
   return (
