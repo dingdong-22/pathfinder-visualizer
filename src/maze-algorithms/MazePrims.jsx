@@ -5,16 +5,6 @@ let moves = [
   [0, 1],
 ];
 
-let vertMoves = [
-  [1, 0],
-  [-1, 0],
-];
-
-let horiMoves = [
-  [0, 1],
-  [0, -1],
-];
-
 function MazePrims(n, m, stack, visited, walls, setDone) {
   function validMove(i, j) {
     if (i < 0 || i >= n || j < 0 || j >= m) {
@@ -74,39 +64,19 @@ function MazePrims(n, m, stack, visited, walls, setDone) {
     let [x, y] = node.split(",").map((x) => parseInt(x));
     let neighbours = [];
 
-    let vertiNeighbours = [];
-    for (let [dx, dy] of vertMoves) {
+    for (let [dx, dy] of moves) {
       let [i, j] = [x + 2 * dx, y + 2 * dy];
       let hash = `${i},${j}`;
       if (!validMove(i, j)) {
         continue;
       } else if (visited.has(hash)) {
-        vertiNeighbours.push(`${x + dx},${y + dy}`);
+        neighbours.push(`${x + dx},${y + dy}`);
       }
-    }
-
-    if (vertiNeighbours.length === 1) {
-      neighbours.push(vertiNeighbours);
-    }
-
-    let horiNeighbours = [];
-    for (let [dx, dy] of horiMoves) {
-      let [i, j] = [x + 2 * dx, y + 2 * dy];
-      let hash = `${i},${j}`;
-      if (!validMove(i, j)) {
-        continue;
-      } else if (visited.has(hash)) {
-        horiNeighbours.push(`${x + dx},${y + dy}`);
-      }
-    }
-
-    if (horiNeighbours.length === 1) {
-      neighbours.push(horiNeighbours);
     }
 
     if (neighbours.length > 0) {
       let randomIndex = Math.floor(Math.random() * neighbours.length);
-      let [inbetween] = neighbours.splice(randomIndex, 1)[0];
+      let inbetween = neighbours.splice(randomIndex, 1)[0];
 
       walls.delete(node);
       visited.add(node);
