@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import MazeDFS from "./maze-algorithms/MazeDFS";
 import MazePrims from "./maze-algorithms/MazePrims";
+import RecursiveDivision from "./maze-algorithms/RecursiveDivision";
 
 function MazeSelector(props) {
   let [algo, setAlgo] = useState("");
@@ -10,15 +11,15 @@ function MazeSelector(props) {
 
   let n = props.n;
   let m = props.m;
-  let speed = 15;
+  let speed = 5;
 
   useEffect(() => {
     if (!done) {
       let timeout;
       let visitedCopy = new Set(visited);
-      let stackCopy = [...stack];
       let walls = new Set(props.walls);
       if (algo === "MazeDFS") {
+        let stackCopy = [...stack];
         timeout = setTimeout(() => {
           MazeDFS(n, m, stackCopy, visitedCopy, walls, setDone);
           props.setWalls(walls);
@@ -26,8 +27,18 @@ function MazeSelector(props) {
           setStack(stackCopy);
         }, speed);
       } else if (algo === "MazePrims") {
+        let stackCopy = [...stack];
         timeout = setTimeout(() => {
           MazePrims(n, m, stackCopy, visitedCopy, walls, setDone);
+          props.setWalls(walls);
+          setVisited(visitedCopy);
+          setStack(stackCopy);
+        }, speed);
+      } else if (algo === "RecursiveDivision") {
+        let stackCopy = stack.map((x) => [...x]);
+
+        timeout = setTimeout(() => {
+          RecursiveDivision(n, m, stackCopy, visitedCopy, walls, setDone);
           props.setWalls(walls);
           setVisited(visitedCopy);
           setStack(stackCopy);
@@ -64,6 +75,12 @@ function MazeSelector(props) {
         onClick={() => setAlgo(algo === "" ? "MazePrims" : "")}
       >
         MazePrims
+      </button>
+      <button
+        className="maze-algo-button"
+        onClick={() => setAlgo(algo === "" ? "RecursiveDivision" : "")}
+      >
+        Recursive Division
       </button>
     </div>
   );

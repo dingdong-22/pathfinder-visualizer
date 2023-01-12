@@ -13,8 +13,10 @@ function Board() {
   let [stack, setStack] = useState([]);
   let [mainPath, setMainPath] = useState(new Set());
 
-  let n = 21;
-  let m = 51;
+  let [sw, setSw] = useState(false);
+
+  let n = 27;
+  let m = 63;
 
   function switchNode(id) {
     if (nodeType === "target") {
