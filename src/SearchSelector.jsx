@@ -130,9 +130,6 @@ function SearchSelector(props) {
   return (
     <div className="search-selector">
       <div className="search-selector-label">Search algorithms</div>
-      <button className="search-algo-button" id="reset" onClick={() => reset()}>
-        Reset Search
-      </button>
       <button
         className="search-algo-button"
         id="BFS"
@@ -161,7 +158,10 @@ function SearchSelector(props) {
       >
         A Star II
       </button>
-      {/* <p>Current algo: {algo}</p> */}
+      
+      <button className="search-algo-button" id="reset" onClick={() => reset()}>
+        Reset Search
+      </button>
     </div>
   );
 }

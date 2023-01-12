@@ -1,11 +1,11 @@
 import { useState } from "react";
+import InfoDisplay from "./InfoDisplay";
 import MazeSelector from "./MazeSelector";
 import NodeTypeSelector from "./NodeTypeSelector";
 import SearchSelector from "./SearchSelector";
 
 function Board() {
   let [nodeType, setNodeType] = useState("target");
-
   let [targets, setTargets] = useState([]);
   let [walls, setWalls] = useState(new Set());
   let [visited, setVisited] = useState(new Set());
@@ -15,7 +15,7 @@ function Board() {
 
   let [sw, setSw] = useState(false);
 
-  let n = 27;
+  let n = 25;
   let m = 63;
 
   function switchNode(id) {
@@ -71,9 +71,7 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => switchNode(e.target.id)}
-            >
-              X
-            </button>
+            ></button>
           );
         } else if (displayStack.has(hash)) {
           board.push(
@@ -104,9 +102,7 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => switchNode(e.target.id)}
-            >
-              M
-            </button>
+            ></button>
           );
         } else {
           board.push(
@@ -153,6 +149,7 @@ function Board() {
         setTargets={setTargets}
       />
       <div className="board">{createBoard(n, m, targets, walls)}</div>
+      <InfoDisplay mainPath={mainPath} />
     </div>
   );
 }

@@ -14,7 +14,6 @@ function NodeTypeSelector(props) {
       >
         Wall Node
       </button>
-      {/* <p>Current type: {props.nodeType}</p> */}
     </div>
   );
 }
