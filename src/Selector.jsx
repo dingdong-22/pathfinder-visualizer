@@ -112,7 +112,7 @@ function Selector(props) {
   }, [algo, props.visited]);
 
   function reset() {
-    if (props.mainPath.length === 0) {
+    if (props.mainPath.size === 0) {
       props.setTargets([]);
       props.setWalls([]);
     }
