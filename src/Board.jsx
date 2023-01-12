@@ -18,12 +18,11 @@ function Board() {
   let n = 25;
   let m = 63;
 
-  function switchNode(id) {
+  function placeNode(id) {
     if (nodeType === "target") {
       if (walls.has(id)) {
         return;
       }
-      console.log("Targets:", targets);
       let nodeIdx = targets.indexOf(id);
       let newTargets = [...targets];
       if (nodeIdx === -1) {
@@ -37,7 +36,6 @@ function Board() {
       if (targets.includes(id)) {
         return;
       }
-      console.log("Walls:", walls);
       let newWalls = new Set(walls);
       if (newWalls.has(id)) {
         newWalls.delete(id);
@@ -59,7 +57,7 @@ function Board() {
               className="target-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => switchNode(e.target.id)}
+              onClick={(e) => placeNode(e.target.id)}
             >
               {targets.indexOf(hash)}
             </button>
@@ -70,7 +68,7 @@ function Board() {
               className="wall-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => switchNode(e.target.id)}
+              onClick={(e) => placeNode(e.target.id)}
             ></button>
           );
         } else if (displayStack.has(hash)) {
@@ -79,10 +77,8 @@ function Board() {
               className="stack-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => switchNode(e.target.id)}
-            >
-              S
-            </button>
+              onClick={(e) => placeNode(e.target.id)}
+            ></button>
           );
         } else if (visited.has(hash)) {
           board.push(
@@ -90,10 +86,8 @@ function Board() {
               className="visited-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => switchNode(e.target.id)}
-            >
-              V
-            </button>
+              onClick={(e) => placeNode(e.target.id)}
+            ></button>
           );
         } else if (mainPath.has(hash)) {
           board.push(
@@ -101,7 +95,7 @@ function Board() {
               className="main-path-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => switchNode(e.target.id)}
+              onClick={(e) => placeNode(e.target.id)}
             ></button>
           );
         } else {
@@ -110,7 +104,7 @@ function Board() {
               className="empty-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => switchNode(e.target.id)}
+              onClick={(e) => placeNode(e.target.id)}
             ></button>
           );
         }
