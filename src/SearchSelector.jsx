@@ -126,10 +126,9 @@ function SearchSelector(props) {
     props.setMainPath(new Set());
     setDone(false);
   }
-  console.log(algo)
   return (
     <div className="search-selector">
-      <div className="search-selector-label">Search algorithms</div>
+      <div className="search-selector-label" >Search Algorithms</div>
       <button
         className="search-algo-button"
         id="BFS"
@@ -149,14 +148,14 @@ function SearchSelector(props) {
         id="MAS1"
         onClick={() => setAlgo(algo !== "MAS1" ? "MAS1" : "")}
       >
-        A Star I
+        A* I
       </button>
       <button
         className="search-algo-button"
         id="MAS2"
         onClick={() => setAlgo(algo !== "MAS2" ? "MAS2" : "")}
       >
-        A Star II
+        A* II
       </button>
 
       {algo !== "" ? (

@@ -37,6 +37,7 @@ h1 {
   display: grid;
   grid-template-rows: repeat(25, 18px);
   grid-template-columns: repeat(63, 18px);
+  margin-top: 5px;
 }
 
 .board button {
@@ -117,6 +118,10 @@ h1 {
 
 .target-node {
   background-color: var(--clr-target-node);
+  padding: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wall-node {

@@ -74,7 +74,7 @@ function MazeSelector(props) {
         id="prims"
         onClick={() => setAlgo(algo === "" && !done ? "MazePrims" : "")}
       >
-        Prims
+        Prim's
       </button>
       <button
         className="maze-algo-button"

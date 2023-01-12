@@ -13,10 +13,16 @@ function Board() {
   let [stack, setStack] = useState([]);
   let [mainPath, setMainPath] = useState(new Set());
 
-  let [sw, setSw] = useState(false);
+  let [mouseDown, setMouseDown] = useState(false);
 
   let n = 25;
   let m = 63;
+
+  function dragDraw(e) {
+    if (mouseDown) {
+      placeNode(e.target.id);
+    }
+  }
 
   function placeNode(id) {
     if (nodeType === "target") {
@@ -58,6 +64,9 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseEnter={(e) => dragDraw(e)}
+              onMouseDown={() => setMouseDown(true)}
+              onMouseUp={() => setMouseDown(false)}
             >
               {targets.indexOf(hash)}
             </button>
@@ -69,6 +78,9 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseEnter={(e) => dragDraw(e)}
+              onMouseDown={() => setMouseDown(true)}
+              onMouseUp={() => setMouseDown(false)}
             ></button>
           );
         } else if (displayStack.has(hash)) {
@@ -78,6 +90,9 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseEnter={(e) => dragDraw(e)}
+              onMouseDown={() => setMouseDown(true)}
+              onMouseUp={() => setMouseDown(false)}
             ></button>
           );
         } else if (visited.has(hash)) {
@@ -87,6 +102,9 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseEnter={(e) => dragDraw(e)}
+              onMouseDown={() => setMouseDown(true)}
+              onMouseUp={() => setMouseDown(false)}
             ></button>
           );
         } else if (mainPath.has(hash)) {
@@ -96,6 +114,9 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseEnter={(e) => dragDraw(e)}
+              onMouseDown={() => setMouseDown(true)}
+              onMouseUp={() => setMouseDown(false)}
             ></button>
           );
         } else {
@@ -105,6 +126,9 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseEnter={(e) => dragDraw(e)}
+              onMouseDown={() => setMouseDown(true)}
+              onMouseUp={() => setMouseDown(false)}
             ></button>
           );
         }
@@ -142,7 +166,9 @@ function Board() {
         targets={targets}
         setTargets={setTargets}
       />
-      <div className="board">{createBoard(n, m, targets, walls)}</div>
+      <div className="board" onMouseLeave={() => setMouseDown(false)}>
+        {createBoard(n, m, targets, walls)}
+      </div>
       <InfoDisplay mainPath={mainPath} />
     </div>
   );
