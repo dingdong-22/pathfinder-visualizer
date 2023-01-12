@@ -12,7 +12,7 @@ function MazeSelector(props) {
   let speed = 15;
 
   useEffect(() => {
-    console.log(done)
+    console.log(done);
     if (!done) {
       if (visited.size + props.walls.size < n * m) {
         let timeout;
@@ -35,19 +35,18 @@ function MazeSelector(props) {
   }, [algo, props.walls]);
 
   function reset() {
-    setDone(false)
-    setVisited(new Set())
-    setStack([])
-    props.setWalls(new Set())
+    setVisited(new Set());
+    setStack([]);
+    props.setWalls(new Set());
+    props.setTargets([]);
+    setDone(false);
   }
 
   return (
     <div className="maze-selector">
+      <button onClick={() => reset()}>Reset Walls + Targets</button>
       <button onClick={() => setAlgo(algo === "" ? "DFS" : "")}>
         Recursive Backtracker
-      </button>
-      <button onClick={() => reset()}>
-        Reset
       </button>
     </div>
   );

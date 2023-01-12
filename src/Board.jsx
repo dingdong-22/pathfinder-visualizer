@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MazeSelector from "./MazeSelector";
+import NodeTypeSelector from "./NodeTypeSelector";
 import SearchSelector from "./SearchSelector";
 
 function Board() {
@@ -122,6 +123,7 @@ function Board() {
 
   return (
     <div>
+      <NodeTypeSelector nodeType={nodeType} setNodeType={setNodeType} />
       <SearchSelector
         n={n}
         m={m}
@@ -140,7 +142,14 @@ function Board() {
         mainPath={mainPath}
         setMainPath={setMainPath}
       />
-      <MazeSelector n={n} m={m} walls={walls} setWalls={setWalls} />
+      <MazeSelector
+        n={n}
+        m={m}
+        walls={walls}
+        setWalls={setWalls}
+        targets={targets}
+        setTargets={setTargets}
+      />
       <div className="board">{createBoard(n, m, targets, walls)}</div>
     </div>
   );

@@ -4,7 +4,7 @@ import Board from "./Board";
 function App() {
   return (
     <div className="App">
-      Visualizers
+      Pathfinder Visualizer
       <Board />
     </div>
   );

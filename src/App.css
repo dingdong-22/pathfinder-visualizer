@@ -33,7 +33,12 @@
 }
 
 .main-path-node {
-background-color: rgb(4, 117, 255);
+  background-color: rgb(4, 117, 255);
+}
+
+.node-type-selector {
+  display: flex;
+  justify-content: center;
 }
 
 .search-selector {
