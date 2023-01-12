@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Selector from "./Selector";
+import MazeSelector from "./MazeSelector";
+import SearchSelector from "./SearchSelector";
 
 function Board() {
   let [nodeType, setNodeType] = useState("target");
@@ -11,8 +12,8 @@ function Board() {
   let [stack, setStack] = useState([]);
   let [mainPath, setMainPath] = useState(new Set());
 
-  let n = 25;
-  let m = 60;
+  let n = 21;
+  let m = 51;
 
   function switchNode(id) {
     if (nodeType === "target") {
@@ -121,7 +122,7 @@ function Board() {
 
   return (
     <div>
-      <Selector
+      <SearchSelector
         n={n}
         m={m}
         targets={targets}
@@ -139,6 +140,7 @@ function Board() {
         mainPath={mainPath}
         setMainPath={setMainPath}
       />
+      <MazeSelector n={n} m={m} walls={walls} setWalls={setWalls} />
       <div className="board">{createBoard(n, m, targets, walls)}</div>
     </div>
   );

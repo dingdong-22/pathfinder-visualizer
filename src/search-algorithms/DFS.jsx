@@ -9,7 +9,7 @@ function manhattanDistance(x, y, target) {
   return Math.abs(x - target[0]) + Math.abs(y - target[1]);
 }
 
-function ManhattanAStar1(
+function DFS(
   n,
   m,
   targets,
@@ -20,18 +20,13 @@ function ManhattanAStar1(
   setPointer,
   displayStack,
   mainPath,
-  setMainPath,
+  setMainPath
 ) {
   function validMove(i, j) {
     if (i < 0 || i >= n || j < 0 || j >= m) {
       return false;
     }
     return true;
-  }
-
-  function heuristic(a, b) {
-    let [c1, c2] = [a[1] + a[2].length, b[1] + b[2].length];
-    return c2 - c1;
   }
 
   if (stack.length === 0) {
@@ -73,8 +68,7 @@ function ManhattanAStar1(
     displayStack.add(hash);
   }
 
-  stack = stack.sort((a, b) => heuristic(a, b));
   return;
 }
 
-export default ManhattanAStar1;
+export default DFS;
