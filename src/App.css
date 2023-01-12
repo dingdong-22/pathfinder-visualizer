@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(132, 175, 212);
+}
+
 .App {
   display: grid;
   place-items: center;
@@ -10,28 +14,85 @@ h1 {
 
 .board {
   display: grid;
-  grid-template-rows: repeat(27, 15px);
-  grid-template-columns: repeat(63, 15px);
+  grid-template-rows: repeat(27, 18px);
+  grid-template-columns: repeat(63, 18px);
 }
 
 .board button {
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   border: none;
   outline: 1px black solid;
 }
 
 .board button:hover {
-  transform: scale(1.3);
-  transition-delay: 0.01s;
+  transform: scale(1.5);
+}
+
+.node-type-target-button,
+.node-type-wall-button,
+.maze-algo-button,
+.search-algo-button,
+.search-selector-label,
+.node-type-selector-label,
+.maze-selector-label {
+  width: 140px;
+  height: 40px;
+  border: 1px black solid;
+  border-radius: 5%;
+  outline: none;
+  padding: 0;
+  font-weight: 525;
+}
+
+:where(
+    .node-type-target-button,
+    .node-type-wall-button,
+    .maze-algo-button,
+    .search-algo-button
+  ):hover {
+  transform: translate(0px, -2px);
+}
+
+:where(
+    .node-type-target-button,
+    .node-type-wall-button,
+    .maze-algo-button,
+    .search-algo-button
+  ):active {
+  transform: translate(0px, 2px);
+}
+
+.search-algo-button {
+  background-color: #67bdff;
+}
+
+.search-algo-button#reset {
+  background-color: #ff4040;
+}
+
+.maze-algo-button {
+  background-color: #f7f753;
+}
+
+.maze-algo-button#reset {
+  background-color: #ff4040;
+}
+
+.node-type-target-button {
+  background-color: #43ff43;
+}
+
+.node-type-wall-button {
+  background-color: #827979;
 }
 
 .target-node {
-  background-color: rgb(0, 255, 0);
+  background-color: #43ff43;
 }
 
 .wall-node {
-  background-color: rgb(0, 0, 0);
+  background-color: #3b3a3a;
 }
 
 .visited-node {
@@ -48,28 +109,42 @@ h1 {
 
 .node-type-selector {
   display: flex;
-  justify-content: center;
   height: 40px;
-  align-items: center;
 }
 
 .search-selector {
   display: flex;
-  justify-content: center;
   height: 40px;
-  align-items: center;
 }
 
 .maze-selector {
   display: flex;
-  justify-content: center;
   height: 40px;
-  align-items: center;
 }
 
-.node-type-button,
-.maze-algo-button,
-.search-algo-button {
-  width: 100px;
-  height: 40px;
+.node-type-selector-label {
+  display: grid;
+  place-content: center;
+  margin: none;
+  background-color: #ff67ed;
+  border: none;
+  border-radius: 0%;
+}
+
+.search-selector-label {
+  display: grid;
+  place-content: center;
+  margin: none;
+  background-color: #ff67ed;
+  border: none;
+  border-radius: 0%;
+}
+
+.maze-selector-label {
+  display: grid;
+  place-content: center;
+  margin: none;
+  background-color: #ff67ed;
+  border: none;
+  border-radius: 0%;
 }

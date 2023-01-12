@@ -129,34 +129,39 @@ function SearchSelector(props) {
 
   return (
     <div className="search-selector">
-      <button className="search-algo-button" onClick={() => reset()}>
+      <div className="search-selector-label">Search algorithms</div>
+      <button className="search-algo-button" id="reset" onClick={() => reset()}>
         Reset Search
       </button>
       <button
         className="search-algo-button"
+        id="BFS"
         onClick={() => setAlgo(algo === "" ? "BFS" : "")}
       >
         BFS
       </button>
       <button
         className="search-algo-button"
+        id="DFS"
         onClick={() => setAlgo(algo === "" ? "DFS" : "")}
       >
         DFS
       </button>
       <button
         className="search-algo-button"
+        id="MAS1"
         onClick={() => setAlgo(algo === "" ? "MAS1" : "")}
       >
         A Star I
       </button>
       <button
         className="search-algo-button"
+        id="MAS2"
         onClick={() => setAlgo(algo === "" ? "MAS2" : "")}
       >
         A Star II
       </button>
-      <p>Current algo: {algo}</p>
+      {/* <p>Current algo: {algo}</p> */}
     </div>
   );
 }

@@ -1,19 +1,20 @@
 function NodeTypeSelector(props) {
   return (
     <div className="node-type-selector">
+      <div className="node-type-selector-label">Node Type</div>
       <button
-        className="node-type-button"
+        className="node-type-target-button"
         onClick={() => props.setNodeType("target")}
       >
         Target Node
       </button>
       <button
-        className="node-type-button"
+        className="node-type-wall-button"
         onClick={() => props.setNodeType("wall")}
       >
         Wall Node
       </button>
-      <p>Current type: {props.nodeType}</p>
+      {/* <p>Current type: {props.nodeType}</p> */}
     </div>
   );
 }

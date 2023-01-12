@@ -60,24 +60,27 @@ function MazeSelector(props) {
 
   return (
     <div className="maze-selector">
-      <button className="maze-algo-button" onClick={() => reset()}>
-        Reset Walls + Targets
+      <div className="maze-selector-label">Maze Algorithms</div>
+      <button className="maze-algo-button" id="reset" onClick={() => reset()}>
+        Reset Map
       </button>
       <button
         className="maze-algo-button"
+        id="dfs"
         onClick={() => setAlgo(algo === "" ? "MazeDFS" : "")}
       >
-        MazeDFS
+        DFS
       </button>
-
       <button
         className="maze-algo-button"
+        id="prims"
         onClick={() => setAlgo(algo === "" ? "MazePrims" : "")}
       >
-        MazePrims
+        Prims
       </button>
       <button
         className="maze-algo-button"
+        id="rec-div"
         onClick={() => setAlgo(algo === "" ? "RecursiveDivision" : "")}
       >
         Recursive Division
