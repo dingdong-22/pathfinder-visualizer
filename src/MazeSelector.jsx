@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import MazeDFS from "./maze-algorithms/MazeDFS";
+import MazePrims from "./maze-algorithms/MazePrims";
 
 function MazeSelector(props) {
   let [algo, setAlgo] = useState("");
@@ -12,23 +13,27 @@ function MazeSelector(props) {
   let speed = 15;
 
   useEffect(() => {
-    console.log(done);
     if (!done) {
-      if (visited.size + props.walls.size < n * m) {
-        let timeout;
-        let visitedCopy = new Set(visited);
-        let stackCopy = [...stack];
-        let walls = new Set(props.walls);
-        if (algo === "DFS") {
-          timeout = setTimeout(() => {
-            MazeDFS(n, m, stackCopy, visitedCopy, walls, setDone);
-            props.setWalls(walls);
-            setVisited(visitedCopy);
-            setStack(stackCopy);
-          }, speed);
-        }
-        return () => clearTimeout(timeout);
+      let timeout;
+      let visitedCopy = new Set(visited);
+      let stackCopy = [...stack];
+      let walls = new Set(props.walls);
+      if (algo === "MazeDFS") {
+        timeout = setTimeout(() => {
+          MazeDFS(n, m, stackCopy, visitedCopy, walls, setDone);
+          props.setWalls(walls);
+          setVisited(visitedCopy);
+          setStack(stackCopy);
+        }, speed);
+      } else if (algo === "MazePrims") {
+        timeout = setTimeout(() => {
+          MazePrims(n, m, stackCopy, visitedCopy, walls, setDone);
+          props.setWalls(walls);
+          setVisited(visitedCopy);
+          setStack(stackCopy);
+        }, speed);
       }
+      return () => clearTimeout(timeout);
     } else {
       setAlgo("");
     }
@@ -49,9 +54,16 @@ function MazeSelector(props) {
       </button>
       <button
         className="maze-algo-button"
-        onClick={() => setAlgo(algo === "" ? "DFS" : "")}
+        onClick={() => setAlgo(algo === "" ? "MazeDFS" : "")}
       >
-        Recursive Backtracker
+        MazeDFS
+      </button>
+
+      <button
+        className="maze-algo-button"
+        onClick={() => setAlgo(algo === "" ? "MazePrims" : "")}
+      >
+        MazePrims
       </button>
     </div>
   );
