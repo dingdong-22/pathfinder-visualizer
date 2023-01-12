@@ -47,6 +47,7 @@ function MazeSelector(props) {
       return () => clearTimeout(timeout);
     } else {
       setAlgo("");
+      setDone(true);
     }
   }, [algo, props.walls]);
 
@@ -64,27 +65,33 @@ function MazeSelector(props) {
       <button
         className="maze-algo-button"
         id="dfs"
-        onClick={() => setAlgo(algo === "" ? "MazeDFS" : "")}
+        onClick={() => setAlgo(algo === "" && !done ? "MazeDFS" : "")}
       >
         DFS
       </button>
       <button
         className="maze-algo-button"
         id="prims"
-        onClick={() => setAlgo(algo === "" ? "MazePrims" : "")}
+        onClick={() => setAlgo(algo === "" && !done ? "MazePrims" : "")}
       >
         Prims
       </button>
       <button
         className="maze-algo-button"
         id="rec-div"
-        onClick={() => setAlgo(algo === "" ? "RecursiveDivision" : "")}
+        onClick={() => setAlgo(algo === "" && !done ? "RecursiveDivision" : "")}
       >
         Recursive Division
       </button>
       <button className="maze-algo-button" id="reset" onClick={() => reset()}>
         Reset Map
       </button>
+
+      {algo !== "" && !done ? (
+        <div className="maze-generating-message">
+          "Generating maze please wait! =)"
+        </div>
+      ) : null}
     </div>
   );
 }
