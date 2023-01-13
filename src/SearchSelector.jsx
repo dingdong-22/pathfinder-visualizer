@@ -72,7 +72,7 @@ function SearchSelector(props) {
             props.setVisited(visited);
             props.setStack(stack);
           }, speed);
-        } else if (algo === "MAS1") {
+        } else if (algo === "A1") {
           timeout = setTimeout(() => {
             ManhattanAStar1(
               n,
@@ -90,7 +90,7 @@ function SearchSelector(props) {
             props.setVisited(visited);
             props.setStack(stack);
           }, speed);
-        } else if (algo === "MAS2") {
+        } else if (algo === "A2") {
           timeout = setTimeout(() => {
             ManhattanAStar2(
               n,
@@ -148,15 +148,15 @@ function SearchSelector(props) {
       </button>
       <button
         className="search-algo-button"
-        id="MAS1"
-        onClick={() => setAlgo(algo !== "MAS1" ? "MAS1" : "")}
+        id="A1"
+        onClick={() => setAlgo(algo !== "A1" ? "A1" : "")}
       >
         A* I
       </button>
       <button
         className="search-algo-button"
-        id="MAS2"
-        onClick={() => setAlgo(algo !== "MAS2" ? "MAS2" : "")}
+        id="A2"
+        onClick={() => setAlgo(algo !== "A2" ? "A2" : "")}
       >
         A* II
       </button>
