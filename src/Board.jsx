@@ -12,7 +12,7 @@ function Board() {
   let [displayStack, setDisplayStack] = useState(new Set());
   let [stack, setStack] = useState([]);
   let [mainPath, setMainPath] = useState(new Set());
-
+  let [iterations, setIterations] = useState(0);
   let [mouseDown, setMouseDown] = useState(false);
 
   let n = 25;
@@ -136,7 +136,7 @@ function Board() {
     }
     return board;
   }
-
+  
   return (
     <div>
       <NodeTypeSelector nodeType={nodeType} setNodeType={setNodeType} />
@@ -157,6 +157,8 @@ function Board() {
         setDisplayStack={setDisplayStack}
         mainPath={mainPath}
         setMainPath={setMainPath}
+        iterations={iterations}
+        setIterations={setIterations}
       />
       <MazeSelector
         n={n}
@@ -169,7 +171,7 @@ function Board() {
       <div className="board" onMouseLeave={() => setMouseDown(false)}>
         {createBoard(n, m, targets, walls)}
       </div>
-      <InfoDisplay mainPath={mainPath} />
+      <InfoDisplay mainPath={mainPath} iterations={iterations} />
     </div>
   );
 }

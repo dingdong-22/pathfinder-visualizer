@@ -35,6 +35,7 @@ function SearchSelector(props) {
         let visited = new Set(props.visited);
         let stack = stackCopier();
         let timeout;
+        props.setIterations(props.iterations + 1);
         if (algo === "BFS") {
           timeout = setTimeout(() => {
             BFS(
@@ -125,10 +126,12 @@ function SearchSelector(props) {
     setPointer(0);
     props.setMainPath(new Set());
     setDone(false);
+    props.setIterations(0);
   }
+
   return (
     <div className="search-selector">
-      <div className="search-selector-label" >Search Algorithms</div>
+      <div className="search-selector-label">Search Algorithms</div>
       <button
         className="search-algo-button"
         id="BFS"
