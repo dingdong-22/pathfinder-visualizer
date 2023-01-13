@@ -32,7 +32,7 @@ function RecursiveDivision(n, m, stack, visited, walls, setDone) {
     let y = Math.floor((Math.random() * (e2 - s2 + 1) + s2) / 2) * 2;
     let gap = Math.floor((Math.random() * (e1 - s1 + 1) + s1) / 2) * 2 + 1;
 
-    for (let i = s1; i < e1; i++) {
+    for (let i = s1; i <= e1; i++) {
       if (i === gap) {
         continue;
       } else {
@@ -45,7 +45,7 @@ function RecursiveDivision(n, m, stack, visited, walls, setDone) {
     let x = Math.floor((Math.random() * (e1 - s1 + 1) + s1) / 2) * 2;
     let gap = Math.floor((Math.random() * (e2 - s2 + 1) + s2) / 2) * 2 + 1;
 
-    for (let i = s2; i < e2; i++) {
+    for (let i = s2; i <= e2; i++) {
       if (i === gap) {
         continue;
       } else {
