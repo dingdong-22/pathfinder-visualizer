@@ -5,7 +5,7 @@ let moves = [
   [0, 1],
 ];
 
-function MazeDFS(n, m, stack, visited, walls, setDone) {
+function MazeDFS(n, m, stack, visited, walls, display, setDone) {
   function validMove(i, j) {
     if (i < 0 || i >= n || j < 0 || j >= m) {
       return false;
@@ -41,6 +41,7 @@ function MazeDFS(n, m, stack, visited, walls, setDone) {
   }
 
   let node = stack.pop();
+  display.add(node)
   let [x, y] = node.split(",").map((x) => parseInt(x));
   let neighbours = [];
 

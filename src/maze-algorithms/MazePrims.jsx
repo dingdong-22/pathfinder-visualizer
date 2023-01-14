@@ -5,7 +5,7 @@ let moves = [
   [0, 1],
 ];
 
-function MazePrims(n, m, stack, visited, walls, setDone) {
+function MazePrims(n, m, stack, visited, walls, display, setDone) {
   function validMove(i, j) {
     if (i < 0 || i >= n || j < 0 || j >= m) {
       return false;
@@ -74,6 +74,7 @@ function MazePrims(n, m, stack, visited, walls, setDone) {
       }
     }
 
+
     if (neighbours.length > 0) {
       let randomIndex = Math.floor(Math.random() * neighbours.length);
       let inbetween = neighbours.splice(randomIndex, 1)[0];
@@ -91,6 +92,7 @@ function MazePrims(n, m, stack, visited, walls, setDone) {
           continue;
         }
       }
+      display.add(node)
       break;
     } else {
       continue;

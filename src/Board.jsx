@@ -15,6 +15,8 @@ function Board() {
   let [iterations, setIterations] = useState(0);
   let [mouseDown, setMouseDown] = useState(false);
 
+  let [mazeDisplay, setMazeDisplay] = useState(new Set());
+
   let n = 25;
   let m = 63;
 
@@ -70,6 +72,18 @@ function Board() {
             >
               {targets.indexOf(hash)}
             </button>
+          );
+        } else if (mazeDisplay.has(hash)) {
+          board.push(
+            <button
+              className="maze-display-node"
+              id={`${i},${j}`}
+              key={`${i},${j}`}
+              onClick={(e) => placeNode(e.target.id)}
+              onMouseEnter={(e) => dragDraw(e)}
+              onMouseDown={() => setMouseDown(true)}
+              onMouseUp={() => setMouseDown(false)}
+            ></button>
           );
         } else if (walls.has(hash)) {
           board.push(
@@ -136,7 +150,7 @@ function Board() {
     }
     return board;
   }
-  
+
   return (
     <div>
       <NodeTypeSelector nodeType={nodeType} setNodeType={setNodeType} />
@@ -167,6 +181,8 @@ function Board() {
         setWalls={setWalls}
         targets={targets}
         setTargets={setTargets}
+        mazeDisplay={mazeDisplay}
+        setMazeDisplay={setMazeDisplay}
       />
       <div className="board" onMouseLeave={() => setMouseDown(false)}>
         {createBoard(n, m, targets, walls)}

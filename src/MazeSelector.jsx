@@ -18,21 +18,25 @@ function MazeSelector(props) {
       let timeout;
       let visitedCopy = new Set(visited);
       let walls = new Set(props.walls);
+
+      let display = new Set();
       if (algo === "MazeDFS") {
         let stackCopy = [...stack];
         timeout = setTimeout(() => {
-          MazeDFS(n, m, stackCopy, visitedCopy, walls, setDone);
+          MazeDFS(n, m, stackCopy, visitedCopy, walls, display, setDone);
           props.setWalls(walls);
           setVisited(visitedCopy);
           setStack(stackCopy);
+          props.setMazeDisplay(display);
         }, speed);
       } else if (algo === "MazePrims") {
         let stackCopy = [...stack];
         timeout = setTimeout(() => {
-          MazePrims(n, m, stackCopy, visitedCopy, walls, setDone);
+          MazePrims(n, m, stackCopy, visitedCopy, walls, display, setDone);
           props.setWalls(walls);
           setVisited(visitedCopy);
           setStack(stackCopy);
+          props.setMazeDisplay(display);
         }, speed);
       } else if (algo === "RecursiveDivision") {
         let stackCopy = stack.map((x) => [...x]);

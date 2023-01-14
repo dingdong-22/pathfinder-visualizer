@@ -219,3 +219,7 @@ h1 {
     background-color: #fe1717;
   }
 }
+
+.maze-display-node {
+  background-color: rgb(255, 0, 0);
+}
