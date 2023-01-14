@@ -61,6 +61,7 @@ function MazeSelector(props) {
     props.setWalls(new Set());
     props.setTargets([]);
     setDone(false);
+    props.setMazeDisplay(new Set())
   }
 
   return (
