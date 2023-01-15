@@ -1,6 +1,9 @@
+function randomNum(limit) {
+  return Math.floor(Math.random() * limit);
+}
+
 function RecDiv(n, m, stack, visited, walls, display, setDone) {
   function initalizer() {
-    //stack [s1, s2, e1, e2]
     for (let i = 0; i < n; i++) {
       for (let j of [0, m - 1]) {
         walls.add(`${i},${j}`);
@@ -25,15 +28,14 @@ function RecDiv(n, m, stack, visited, walls, display, setDone) {
   }
 
   let [s1, s2, e1, e2] = stack.pop();
-  display.add(`${s1},${s2}`)
-  display.add(`${e1},${e2}`)
-
+  display.add(`${s1},${s2}`);
+  display.add(`${e1},${e2}`);
   if (e1 - s1 < 2 || e2 - s2 < 2) {
     return;
   } else if (e2 - s2 >= e1 - s1) {
-    // wider
-    let y = Math.floor(Math.floor((Math.random() * (e2 - s2 + 1) + s2)) / 2) * 2;
-    let gap = Math.floor(Math.floor((Math.random() * (e1 - s1 + 1) + s1)) / 2) * 2 + 1;
+    let y = Math.floor((randomNum(e2 - s2 - 1) + 1 + s2) / 2) * 2;
+    let gap =
+      Math.floor(Math.floor(Math.random() * (e1 - s1 + 1) + s1) / 2) * 2 + 1;
 
     for (let i = s1; i <= e1; i++) {
       if (i === gap) {
@@ -45,8 +47,9 @@ function RecDiv(n, m, stack, visited, walls, display, setDone) {
     stack.push([s1, s2, e1, y - 1]);
     stack.push([s1, y + 1, e1, e2]);
   } else if (e2 - s2 < e1 - s1) {
-    let x = Math.floor(Math.floor((Math.random() * (e1 - s1 + 1) + s1)) / 2) * 2;
-    let gap = Math.floor(Math.floor((Math.random() * (e2 - s2 + 1) + s2)) / 2) * 2 + 1;
+    let x = Math.floor((randomNum(e1 - s1 - 1) + 1 + s1) / 2) * 2;
+    let gap =
+      Math.floor(Math.floor(Math.random() * (e2 - s2 + 1) + s2) / 2) * 2 + 1;
 
     for (let i = s2; i <= e2; i++) {
       if (i === gap) {
