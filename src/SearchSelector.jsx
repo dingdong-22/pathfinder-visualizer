@@ -49,7 +49,8 @@ function SearchSelector(props) {
               setPointer,
               props.displayStack,
               props.mainPath,
-              props.setMainPath
+              props.setMainPath,
+              setDone
             );
             props.setVisited(visited);
             props.setStack(stack);
@@ -67,7 +68,8 @@ function SearchSelector(props) {
               setPointer,
               props.displayStack,
               props.mainPath,
-              props.setMainPath
+              props.setMainPath,
+              setDone
             );
             props.setVisited(visited);
             props.setStack(stack);
@@ -85,7 +87,8 @@ function SearchSelector(props) {
               setPointer,
               props.displayStack,
               props.mainPath,
-              props.setMainPath
+              props.setMainPath,
+              setDone
             );
             props.setVisited(visited);
             props.setStack(stack);
@@ -103,7 +106,8 @@ function SearchSelector(props) {
               setPointer,
               props.displayStack,
               props.mainPath,
-              props.setMainPath
+              props.setMainPath,
+              setDone
             );
             props.setVisited(visited);
             props.setStack(stack);

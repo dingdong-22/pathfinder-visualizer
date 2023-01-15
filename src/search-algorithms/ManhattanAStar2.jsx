@@ -20,7 +20,8 @@ function ManhattanAStar2(
   setPointer,
   displayStack,
   mainPath,
-  setMainPath
+  setMainPath,
+  setDone
 ) {
   function validMove(i, j) {
     if (i < 0 || i >= n || j < 0 || j >= m) {
@@ -35,6 +36,9 @@ function ManhattanAStar2(
   }
 
   if (stack.length === 0) {
+    if (visited.size > 0) {
+      setDone(true);
+    }
     stack.push([targets[pointer], 0, [`${targets[pointer]}`]]);
     visited.add(targets[pointer]);
   }

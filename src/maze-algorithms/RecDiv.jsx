@@ -32,8 +32,8 @@ function RecDiv(n, m, stack, visited, walls, display, setDone) {
     return;
   } else if (e2 - s2 >= e1 - s1) {
     // wider
-    let y = Math.floor((Math.random() * (e2 - s2 + 1) + s2) / 2) * 2;
-    let gap = Math.floor((Math.random() * (e1 - s1 + 1) + s1) / 2) * 2 + 1;
+    let y = Math.floor(Math.floor((Math.random() * (e2 - s2 + 1) + s2)) / 2) * 2;
+    let gap = Math.floor(Math.floor((Math.random() * (e1 - s1 + 1) + s1)) / 2) * 2 + 1;
 
     for (let i = s1; i <= e1; i++) {
       if (i === gap) {
@@ -45,8 +45,8 @@ function RecDiv(n, m, stack, visited, walls, display, setDone) {
     stack.push([s1, s2, e1, y - 1]);
     stack.push([s1, y + 1, e1, e2]);
   } else if (e2 - s2 < e1 - s1) {
-    let x = Math.floor((Math.random() * (e1 - s1 + 1) + s1) / 2) * 2;
-    let gap = Math.floor((Math.random() * (e2 - s2 + 1) + s2) / 2) * 2 + 1;
+    let x = Math.floor(Math.floor((Math.random() * (e1 - s1 + 1) + s1)) / 2) * 2;
+    let gap = Math.floor(Math.floor((Math.random() * (e2 - s2 + 1) + s2)) / 2) * 2 + 1;
 
     for (let i = s2; i <= e2; i++) {
       if (i === gap) {
