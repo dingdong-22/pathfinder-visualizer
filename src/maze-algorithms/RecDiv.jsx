@@ -1,4 +1,4 @@
-function RecursiveDivision(n, m, stack, visited, walls, setDone) {
+function RecDiv(n, m, stack, visited, walls, display, setDone) {
   function initalizer() {
     //stack [s1, s2, e1, e2]
     for (let i = 0; i < n; i++) {
@@ -25,6 +25,9 @@ function RecursiveDivision(n, m, stack, visited, walls, setDone) {
   }
 
   let [s1, s2, e1, e2] = stack.pop();
+  display.add(`${s1},${s2}`)
+  display.add(`${e1},${e2}`)
+
   if (e1 - s1 < 2 || e2 - s2 < 2) {
     return;
   } else if (e2 - s2 >= e1 - s1) {
@@ -41,7 +44,7 @@ function RecursiveDivision(n, m, stack, visited, walls, setDone) {
     }
     stack.push([s1, s2, e1, y - 1]);
     stack.push([s1, y + 1, e1, e2]);
-  } else {
+  } else if (e2 - s2 < e1 - s1) {
     let x = Math.floor((Math.random() * (e1 - s1 + 1) + s1) / 2) * 2;
     let gap = Math.floor((Math.random() * (e2 - s2 + 1) + s2) / 2) * 2 + 1;
 
@@ -59,6 +62,4 @@ function RecursiveDivision(n, m, stack, visited, walls, setDone) {
   return;
 }
 
-export default RecursiveDivision;
-
-//gaps will only be on odd indexes
+export default RecDiv;

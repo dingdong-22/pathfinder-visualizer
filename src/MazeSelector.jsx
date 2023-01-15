@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import MazeDFS from "./maze-algorithms/MazeDFS";
 import MazePrims from "./maze-algorithms/MazePrims";
-import RecursiveDivision from "./maze-algorithms/RecursiveDivision";
+import RecDiv from "./maze-algorithms/RecDiv";
 
 function MazeSelector(props) {
   let [algo, setAlgo] = useState("");
@@ -11,7 +11,7 @@ function MazeSelector(props) {
 
   let n = props.n;
   let m = props.m;
-  let speed = 5;
+  let speed = 20;
 
   useEffect(() => {
     if (!done) {
@@ -38,14 +38,15 @@ function MazeSelector(props) {
           setStack(stackCopy);
           props.setMazeDisplay(display);
         }, speed);
-      } else if (algo === "RecursiveDivision") {
+      } else if (algo === "RecDiv") {
         let stackCopy = stack.map((x) => [...x]);
 
         timeout = setTimeout(() => {
-          RecursiveDivision(n, m, stackCopy, visitedCopy, walls, setDone);
+          RecDiv(n, m, stackCopy, visitedCopy, walls, display, setDone);
           props.setWalls(walls);
           setVisited(visitedCopy);
           setStack(stackCopy);
+          props.setMazeDisplay(display);
         }, speed);
       }
       return () => clearTimeout(timeout);
@@ -84,7 +85,7 @@ function MazeSelector(props) {
       <button
         className="maze-algo-button"
         id="rec-div"
-        onClick={() => setAlgo(algo === "" && !done ? "RecursiveDivision" : "")}
+        onClick={() => setAlgo(algo === "" && !done ? "RecDiv" : "")}
       >
         Recursive Division
       </button>
