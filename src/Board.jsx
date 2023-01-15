@@ -66,8 +66,11 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseDown={(e) => {
+                setMouseDown(true);
+                placeNode(e.target.id);
+              }}
               onMouseEnter={(e) => dragDraw(e)}
-              onMouseDown={() => setMouseDown(true)}
               onMouseUp={() => setMouseDown(false)}
             >
               {targets.indexOf(hash)}
@@ -80,8 +83,11 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseDown={(e) => {
+                setMouseDown(true);
+                placeNode(e.target.id);
+              }}
               onMouseEnter={(e) => dragDraw(e)}
-              onMouseDown={() => setMouseDown(true)}
               onMouseUp={() => setMouseDown(false)}
             ></button>
           );
@@ -92,8 +98,11 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseDown={(e) => {
+                setMouseDown(true);
+                placeNode(e.target.id);
+              }}
               onMouseEnter={(e) => dragDraw(e)}
-              onMouseDown={() => setMouseDown(true)}
               onMouseUp={() => setMouseDown(false)}
             ></button>
           );
@@ -104,8 +113,11 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseDown={(e) => {
+                setMouseDown(true);
+                placeNode(e.target.id);
+              }}
               onMouseEnter={(e) => dragDraw(e)}
-              onMouseDown={() => setMouseDown(true)}
               onMouseUp={() => setMouseDown(false)}
             ></button>
           );
@@ -116,8 +128,11 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseDown={(e) => {
+                setMouseDown(true);
+                placeNode(e.target.id);
+              }}
               onMouseEnter={(e) => dragDraw(e)}
-              onMouseDown={() => setMouseDown(true)}
               onMouseUp={() => setMouseDown(false)}
             ></button>
           );
@@ -128,8 +143,11 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseDown={(e) => {
+                setMouseDown(true);
+                placeNode(e.target.id);
+              }}
               onMouseEnter={(e) => dragDraw(e)}
-              onMouseDown={() => setMouseDown(true)}
               onMouseUp={() => setMouseDown(false)}
             ></button>
           );
@@ -140,8 +158,11 @@ function Board() {
               id={`${i},${j}`}
               key={`${i},${j}`}
               onClick={(e) => placeNode(e.target.id)}
+              onMouseDown={(e) => {
+                setMouseDown(true);
+                placeNode(e.target.id);
+              }}
               onMouseEnter={(e) => dragDraw(e)}
-              onMouseDown={() => setMouseDown(true)}
               onMouseUp={() => setMouseDown(false)}
             ></button>
           );
