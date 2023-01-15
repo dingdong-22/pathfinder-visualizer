@@ -35,8 +35,8 @@ function SearchSelector(props) {
         let visited = new Set(props.visited);
         let stack = stackCopier();
         let timeout;
-        props.setIterations(props.iterations + 1);
         if (algo === "BFS") {
+          props.setIterations(props.iterations + 1);
           timeout = setTimeout(() => {
             BFS(
               n,
@@ -56,6 +56,7 @@ function SearchSelector(props) {
             props.setStack(stack);
           }, speed);
         } else if (algo === "DFS") {
+          props.setIterations(props.iterations + 1);
           timeout = setTimeout(() => {
             DFS(
               n,
@@ -75,6 +76,7 @@ function SearchSelector(props) {
             props.setStack(stack);
           }, speed);
         } else if (algo === "A1") {
+          props.setIterations(props.iterations + 1);
           timeout = setTimeout(() => {
             ManhattanAStar1(
               n,
@@ -94,6 +96,7 @@ function SearchSelector(props) {
             props.setStack(stack);
           }, speed);
         } else if (algo === "A2") {
+          props.setIterations(props.iterations + 1);
           timeout = setTimeout(() => {
             ManhattanAStar2(
               n,
