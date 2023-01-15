@@ -65,7 +65,6 @@ function Board() {
               className="target-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => placeNode(e.target.id)}
               onMouseDown={(e) => {
                 setMouseDown(true);
                 placeNode(e.target.id);
@@ -82,7 +81,6 @@ function Board() {
               className="maze-display-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => placeNode(e.target.id)}
               onMouseDown={(e) => {
                 setMouseDown(true);
                 placeNode(e.target.id);
@@ -97,7 +95,6 @@ function Board() {
               className="wall-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => placeNode(e.target.id)}
               onMouseDown={(e) => {
                 setMouseDown(true);
                 placeNode(e.target.id);
@@ -112,7 +109,6 @@ function Board() {
               className="stack-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => placeNode(e.target.id)}
               onMouseDown={(e) => {
                 setMouseDown(true);
                 placeNode(e.target.id);
@@ -127,7 +123,6 @@ function Board() {
               className="visited-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => placeNode(e.target.id)}
               onMouseDown={(e) => {
                 setMouseDown(true);
                 placeNode(e.target.id);
@@ -142,7 +137,6 @@ function Board() {
               className="main-path-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => placeNode(e.target.id)}
               onMouseDown={(e) => {
                 setMouseDown(true);
                 placeNode(e.target.id);
@@ -157,7 +151,6 @@ function Board() {
               className="empty-node"
               id={`${i},${j}`}
               key={`${i},${j}`}
-              onClick={(e) => placeNode(e.target.id)}
               onMouseDown={(e) => {
                 setMouseDown(true);
                 placeNode(e.target.id);
