@@ -144,28 +144,28 @@ function SearchSelector(props) {
         id="BFS"
         onClick={() => setAlgo(algo !== "BFS" ? "BFS" : "")}
       >
-        BFS
+        {algo === "BFS" ? "Pause" : "BFS"}
       </button>
       <button
         className="search-algo-button"
         id="DFS"
         onClick={() => setAlgo(algo !== "DFS" ? "DFS" : "")}
       >
-        DFS
+        {algo === "DFS" ? "Pause" : "DFS"}
       </button>
       <button
         className="search-algo-button"
         id="A1"
         onClick={() => setAlgo(algo !== "A1" ? "A1" : "")}
       >
-        A* I
+        {algo === "A1" ? "Pause" : "A* I"}
       </button>
       <button
         className="search-algo-button"
         id="A2"
         onClick={() => setAlgo(algo !== "A2" ? "A2" : "")}
       >
-        A* II
+        {algo === "A2" ? "Pause" : "A* II"}
       </button>
 
       {algo !== "" ? (
