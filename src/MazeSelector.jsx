@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import MazeDFS from "./maze-algorithms/MazeDFS";
 import MazePrims from "./maze-algorithms/MazePrims";
 import RecDiv from "./maze-algorithms/RecDiv";
+import HuntAndKill from "./maze-algorithms/HuntAndKill";
 
 function MazeSelector(props) {
   let [algo, setAlgo] = useState("");
@@ -48,6 +49,15 @@ function MazeSelector(props) {
           setStack(stackCopy);
           props.setMazeDisplay(display);
         }, speed);
+      } else if (algo === "huntandkill") {
+        let stackCopy = [...stack];
+        timeout = setTimeout(() => {
+          HuntAndKill(n, m, stackCopy, visitedCopy, walls, display, setDone);
+          props.setWalls(walls);
+          setVisited(visitedCopy);
+          setStack(stackCopy);
+          props.setMazeDisplay(display);
+        }, speed);
       }
       return () => clearTimeout(timeout);
     } else {
@@ -62,7 +72,8 @@ function MazeSelector(props) {
     props.setWalls(new Set());
     props.setTargets([]);
     setDone(false);
-    props.setMazeDisplay(new Set())
+    props.setMazeDisplay(new Set());
+    setAlgo("");
   }
 
   return (
@@ -89,9 +100,16 @@ function MazeSelector(props) {
       >
         Recursive Division
       </button>
+      <button
+        className="maze-algo-button"
+        id="huntandkill"
+        onClick={() => setAlgo(algo === "" && !done ? "huntandkill" : "")}
+      >
+        Hunt And Kill
+      </button>
       {algo !== "" && !done ? (
         <div className="maze-generating-message">
-          "Generating maze please wait! =)"
+          "Generating maze please wait!"
         </div>
       ) : null}
       <button className="maze-algo-button" id="reset" onClick={() => reset()}>

@@ -193,7 +193,7 @@ h1 {
 }
 
 .maze-generating-message {
-  width: 300px;
+  width: 275px;
   height: 38px;
   display: grid;
   place-items: center;
@@ -201,7 +201,7 @@ h1 {
 }
 
 .current-search-algo-display {
-  width: 200px;
+  width: 275px;
   height: 38px;
   display: grid;
   place-items: center;
