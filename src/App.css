@@ -126,6 +126,7 @@ h1 {
 
 .wall-node {
   background-color: var(--clr-wall-node);
+  animation: place-wall-change 0.25s 1;
 }
 
 .visited-node {
@@ -207,6 +208,10 @@ h1 {
   background-color: var(--clr-current-algo);
 }
 
+.maze-display-node {
+  background-color: rgb(255, 0, 0);
+}
+
 @keyframes visited-color-change {
   0% {
     background-color: #fa812b;
@@ -219,6 +224,9 @@ h1 {
   }
 }
 
-.maze-display-node {
-  background-color: rgb(255, 0, 0);
+@keyframes place-wall-change {
+  0% {
+    transform: scale(1.75);
+    background-color: #979797;
+  }
 }
