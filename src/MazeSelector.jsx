@@ -41,7 +41,6 @@ function MazeSelector(props) {
         }, speed);
       } else if (algo === "RecDiv") {
         let stackCopy = stack.map((x) => [...x]);
-
         timeout = setTimeout(() => {
           RecDiv(n, m, stackCopy, visitedCopy, walls, display, setDone);
           props.setWalls(walls);

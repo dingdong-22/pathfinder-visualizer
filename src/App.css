@@ -43,7 +43,8 @@ h1 {
 .board button {
   width: 18px;
   height: 18px;
-  border: none;
+  border: 1px #6b6b6b solid;
+  /* border: none; */
   outline: 1px black solid;
 }
 
