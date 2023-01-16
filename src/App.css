@@ -2,10 +2,11 @@ body {
   background-color: var(--clr-background);
 
   --clr-background: #b0cde6;
-  --clr-node-type-on: #56fb56;
+  --clr-node-type-on: #48f748;
   --clr-node-type-off: #827979;
-  --clr-node-type-target: #56fb56;
+  --clr-node-type-target: #48f748;
   --clr-node-type-wall: #827979;
+
   --clr-search-algo-button: #ffb847;
   --clr-maze-algo-button: #54f4ec;
   --clr-reset-button: #ff5959;
@@ -21,6 +22,14 @@ body {
   --clr-maze-label: #44e1d9;
 
   --clr-current-algo: #00bbff;
+
+  --clr-board-boarder: #4b4b4b;
+  --clr-board-button-boarder: #6b6b6b;
+  --clr-board-button-outline: #000000;
+
+  --clr-place-wall: #979797;
+  --clr-maze-display: #ff6a00;
+  --clr-place-visited: #fa812b;
 }
 
 .App {
@@ -38,14 +47,14 @@ h1 {
   grid-template-rows: repeat(25, 18px);
   grid-template-columns: repeat(63, 18px);
   margin-top: 5px;
+  border: 3px var(--clr-board-boarder) solid;
 }
 
 .board button {
   width: 18px;
   height: 18px;
-  border: 1px #6b6b6b solid;
-  /* border: none; */
-  outline: 1px black solid;
+  border: 1px var(--clr-board-button-boarder) solid;
+  outline: 1px var(--clr-board-button-outline) solid;
 }
 
 .board button:hover {
@@ -63,7 +72,7 @@ h1 {
 .current-search-algo-display {
   width: 140px;
   height: 40px;
-  border: 1px black solid;
+  border: 1px var(--clr-board-button-outline) solid;
   border-radius: 5%;
   outline: none;
   padding: 0;
@@ -167,7 +176,6 @@ h1 {
   margin: none;
   background-color: var(--clr-node-label);
   border: none;
-  border-radius: 0%;
 }
 
 .search-selector-label {
@@ -176,7 +184,6 @@ h1 {
   margin: none;
   background-color: var(--clr-search-label);
   border: none;
-  border-radius: 0%;
 }
 
 .maze-selector-label {
@@ -185,7 +192,6 @@ h1 {
   margin: none;
   background-color: var(--clr-maze-label);
   border: none;
-  border-radius: 0%;
 }
 
 .info-display {
@@ -211,12 +217,12 @@ h1 {
 }
 
 .maze-display-node {
-  background-color: #ff6a00;
+  background-color: var(--clr-maze-display);
 }
 
 @keyframes visited-animation {
   0% {
-    background-color: #fa812b;
+    background-color: var(--clr-place-visited);
     transform: scale(0.75);
   }
   60% {
@@ -224,15 +230,9 @@ h1 {
   }
 }
 
-@keyframes stack-animation {
-  0% {
-    transform: scale(1.1);
-  }
-}
-
 @keyframes place-wall-change {
   0% {
     transform: scale(1.75);
-    background-color: #979797;
+    background-color: var(--clr-place-wall);
   }
 }
