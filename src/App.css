@@ -130,12 +130,11 @@ h1 {
 
 .visited-node {
   background-color: var(--clr-visited-node);
-  animation: visited-color-change 1.5s 1;
+  animation: visited-color-change 1.75s 1;
 }
 
 .stack-node {
   background-color: var(--clr-stack-node);
-  animation: stack-color-change 0.75s infinite;
 }
 
 .main-path-node {
@@ -210,7 +209,7 @@ h1 {
 
 @keyframes visited-color-change {
   0% {
-    background-color: #09ff00;
+    background-color: #fa812b;
   }
 }
 
