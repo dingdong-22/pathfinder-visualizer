@@ -134,6 +134,7 @@ function SearchSelector(props) {
     props.setMainPath(new Set());
     setDone(false);
     props.setIterations(0);
+    setAlgo("")
   }
 
   return (
