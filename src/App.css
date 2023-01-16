@@ -1,6 +1,9 @@
 body {
   background-color: var(--clr-background);
+  color: var(--clr-text);
 
+  --clr-title: #000000;
+  --clr-text: #000000;
   --clr-background: #b0cde6;
   --clr-node-type-on: #48f748;
   --clr-node-type-off: #827979;
@@ -30,6 +33,46 @@ body {
   --clr-place-wall: #979797;
   --clr-maze-display: #ff6a00;
   --clr-place-visited: #fa812b;
+
+  --clr-nodes: #ffffff;
+  --clr-theme-switch: #ffffff;
+}
+
+body.dark {
+  --clr-title: #ff6600;
+  --clr-text: #ededed;
+  --clr-background: #312242;
+  --clr-node-type-on: #139313;
+  --clr-node-type-off: #424242;
+  --clr-node-type-target: #139313;
+  --clr-node-type-wall: #424242;
+
+  --clr-search-algo-button: #ff6600;
+  --clr-maze-algo-button: #ff6600;
+  --clr-reset-button: #c90000;
+
+  --clr-target-node: #17a717;
+  --clr-wall-node: #850c0c;
+  --clr-visited-node: #f49b3b;
+  --clr-stack-node: #ff6a00;
+  --clr-main-path-node: #0240d2;
+
+  --clr-node-label: #424242;
+  --clr-search-label: #424242;
+  --clr-maze-label: #424242;
+
+  --clr-current-algo: #036183;
+
+  --clr-board-boarder: #424242;
+  --clr-board-button-boarder: #514f4f;
+  --clr-board-button-outline: #000000;
+
+  --clr-place-wall: #373535;
+  --clr-maze-display: #ff6a00;
+  --clr-place-visited: #fa812b;
+
+  --clr-nodes: #141414;
+  --clr-theme-switch: #ff6a00;
 }
 
 .App {
@@ -40,6 +83,7 @@ body {
 h1 {
   margin-top: 5px;
   margin-bottom: 5px;
+  color: var(--clr-title);
 }
 
 .board {
@@ -55,6 +99,10 @@ h1 {
   height: 18px;
   border: 1px var(--clr-board-button-boarder) solid;
   outline: 1px var(--clr-board-button-outline) solid;
+}
+
+.empty-node {
+  background-color: var(--clr-nodes);
 }
 
 .board button:hover {
@@ -100,14 +148,17 @@ h1 {
 
 .node-type-target-button {
   background-color: var(--clr-node-type-target);
+  color: var(--clr-text);
 }
 
 .node-type-wall-button {
   background-color: var(--clr-node-type-wall);
+  color: var(--clr-text);
 }
 
 .search-algo-button {
   background-color: var(--clr-search-algo-button);
+  color: var(--clr-text);
 }
 
 .search-algo-button#reset {
@@ -118,6 +169,7 @@ h1 {
 
 .maze-algo-button {
   background-color: var(--clr-maze-algo-button);
+  color: var(--clr-text);
 }
 
 .maze-algo-button#reset {
@@ -218,6 +270,14 @@ h1 {
 
 .maze-display-node {
   background-color: var(--clr-maze-display);
+}
+
+.theme-switch {
+  background-color: var(--clr-theme-switch);
+  color: var(--clr-text);
+  position: absolute;
+  left: 130px;
+  border-radius: 20%;
 }
 
 @keyframes visited-animation {
