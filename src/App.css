@@ -209,7 +209,7 @@ h1 {
 }
 
 .maze-display-node {
-  background-color: rgb(255, 0, 0);
+  background-color: #ff6a00;
 }
 
 @keyframes visited-color-change {

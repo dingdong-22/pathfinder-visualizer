@@ -47,7 +47,6 @@ function HuntAndKill(n, m, stack, visited, walls, display, setDone) {
     return;
   }
   let [node, hunt] = stack.pop();
-  display.add(node);
   let [x, y] = node.split(",").map((x) => parseInt(x));
   if (!hunt) {
     let neighbours = [];
@@ -69,8 +68,10 @@ function HuntAndKill(n, m, stack, visited, walls, display, setDone) {
       walls.delete(neigh);
       stack.push([neigh, false]);
       walls.delete(between);
+      display.add(neigh);
     } else {
       stack.push([node, true]);
+      display.add(node);
     }
     return;
   } else if (hunt) {

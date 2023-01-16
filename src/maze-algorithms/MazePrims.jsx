@@ -74,7 +74,6 @@ function MazePrims(n, m, stack, visited, walls, display, setDone) {
       }
     }
 
-
     if (neighbours.length > 0) {
       let randomIndex = Math.floor(Math.random() * neighbours.length);
       let inbetween = neighbours.splice(randomIndex, 1)[0];
@@ -92,7 +91,7 @@ function MazePrims(n, m, stack, visited, walls, display, setDone) {
           continue;
         }
       }
-      display.add(node)
+      display.add(node);
       break;
     } else {
       continue;
