@@ -11,7 +11,7 @@ function SearchSelector(props) {
 
   let n = props.n;
   let m = props.m;
-  let speed = 15;
+  let speed = 20;
 
   function stackCopier() {
     let stack = [];
@@ -134,7 +134,7 @@ function SearchSelector(props) {
     props.setMainPath(new Set());
     setDone(false);
     props.setIterations(0);
-    setAlgo("")
+    setAlgo("");
   }
 
   return (

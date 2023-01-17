@@ -278,6 +278,7 @@ h1 {
   position: absolute;
   left: 130px;
   border-radius: 20%;
+  border: 1px #000000 solid;
 }
 
 @keyframes visited-animation {
