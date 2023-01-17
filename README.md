@@ -32,6 +32,7 @@ A visualizer for pathfinding and maze generating algorithms
 
 - Iterations counter - the numberof iterations the search has gone through
 - Moves counter - when the search reaches a target this counter will update and show the current number of moves for the path found
+- Adjustable iteration speed
 - Light/Dark Themes
 - You may switch algorithms in the middle of a search
 - Whilst a maze is being generated please allow it to completely finish, there will be a pop up box while generating
