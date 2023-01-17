@@ -12,7 +12,7 @@ function MazeSelector(props) {
 
   let n = props.n;
   let m = props.m;
-  let speed = 20;
+  let speed = props.speed;
 
   useEffect(() => {
     if (!done) {

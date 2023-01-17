@@ -3,6 +3,7 @@ import InfoDisplay from "./InfoDisplay";
 import MazeSelector from "./MazeSelector";
 import NodeTypeSelector from "./NodeTypeSelector";
 import SearchSelector from "./SearchSelector";
+import SpeedButtons from "./SpeedButtons";
 
 function Board() {
   let [nodeType, setNodeType] = useState("target");
@@ -14,10 +15,11 @@ function Board() {
   let [mainPath, setMainPath] = useState(new Set());
   let [iterations, setIterations] = useState(0);
   let [mouseDown, setMouseDown] = useState(false);
-
   let [mazeDisplay, setMazeDisplay] = useState(new Set());
 
-  let n = 25;
+  let [speed, setSpeed] = useState(250 / 2 ** 3);
+
+  let n = 23;
   let m = 63;
 
   function dragDraw(e) {
@@ -187,6 +189,7 @@ function Board() {
         setMainPath={setMainPath}
         iterations={iterations}
         setIterations={setIterations}
+        speed={speed}
       />
       <MazeSelector
         n={n}
@@ -197,11 +200,13 @@ function Board() {
         setTargets={setTargets}
         mazeDisplay={mazeDisplay}
         setMazeDisplay={setMazeDisplay}
+        speed={speed}
       />
       <div className="board" onMouseLeave={() => setMouseDown(false)}>
         {createBoard(n, m, targets, walls)}
       </div>
       <InfoDisplay mainPath={mainPath} iterations={iterations} />
+      <SpeedButtons speed={speed} setSpeed={setSpeed} />
     </div>
   );
 }

@@ -35,7 +35,7 @@ body {
   --clr-place-visited: #fa812b;
 
   --clr-nodes: #ffffff;
-  --clr-theme-switch: #ffffff;
+  --clr-other-button: #ffffff;
 }
 
 body.dark {
@@ -72,7 +72,7 @@ body.dark {
   --clr-place-visited: #fa812b;
 
   --clr-nodes: #141414;
-  --clr-theme-switch: #ff6a00;
+  --clr-other-button: #ff6a00;
 }
 
 .App {
@@ -88,7 +88,7 @@ h1 {
 
 .board {
   display: grid;
-  grid-template-rows: repeat(25, 18px);
+  grid-template-rows: repeat(23, 18px);
   grid-template-columns: repeat(63, 18px);
   margin-top: 5px;
   border: 3px var(--clr-board-boarder) solid;
@@ -106,7 +106,7 @@ h1 {
 }
 
 .board button:hover {
-  transform: scale(1.5);
+  transform: scale(1.25);
 }
 
 .node-type-target-button,
@@ -132,7 +132,8 @@ h1 {
     .node-type-target-button,
     .node-type-wall-button,
     .maze-algo-button,
-    .search-algo-button
+    .search-algo-button,
+    .speed-button
   ):hover {
   transform: translate(0px, -2px);
 }
@@ -141,7 +142,8 @@ h1 {
     .node-type-target-button,
     .node-type-wall-button,
     .maze-algo-button,
-    .search-algo-button
+    .search-algo-button,
+    .speed-button
   ):active {
   transform: translate(0px, 2px);
 }
@@ -250,6 +252,8 @@ h1 {
   display: flex;
   gap: 15px;
   font-weight: 550;
+  max-width: fit-content;
+  position: absolute;
 }
 
 .maze-generating-message {
@@ -272,13 +276,28 @@ h1 {
   background-color: var(--clr-maze-display);
 }
 
-.theme-switch {
-  background-color: var(--clr-theme-switch);
+.speed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.theme-switch,
+.speed-button {
+  background-color: var(--clr-other-button);
   color: var(--clr-text);
-  position: absolute;
-  left: 130px;
   border-radius: 20%;
   border: 1px #000000 solid;
+}
+
+.theme-switch {
+  position: absolute;
+  left: 130px;
+}
+
+.speed-text {
+  font-weight: 550;
+  margin: 0;
 }
 
 @keyframes visited-animation {
@@ -293,7 +312,7 @@ h1 {
 
 @keyframes place-wall-change {
   0% {
-    transform: scale(1.75);
+    transform: scale(1.5);
     background-color: var(--clr-place-wall);
   }
 }
