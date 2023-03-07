@@ -1,3 +1,5 @@
+[Link](https://pathfinder-visualizer-1402d6.netlify.app/)
+
 # Pathfinder Visualizer
 
 A visualizer for pathfinding and maze generating algorithms
